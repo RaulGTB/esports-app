@@ -1,14 +1,16 @@
-package rjkscore.Application.Service.Impl;
+package rjkscore.application.service.impl;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
-import rjkscore.Application.Mapper.AppUserMapper;
-import rjkscore.Application.Service.AppUserService;
+import rjkscore.Domain.AppUser;
+import rjkscore.Infrastructure.Dto.Request.UpdateUserDto;
 import rjkscore.Infrastructure.Dto.Response.AppUserResponseDto;
 import rjkscore.Infrastructure.Repository.AppUserRepository;
+import rjkscore.application.mapper.AppUserMapper;
+import rjkscore.application.service.AppUserService;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
@@ -32,5 +34,23 @@ public class AppUserServiceImpl implements AppUserService {
         return repository.findById(userId)
                 .map(mapper::toResponseDto)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public AppUserResponseDto updateUser(Long userId, UpdateUserDto dto) {
+        AppUser user = repository.findById(userId)
+              .orElseThrow(()-> new NoSuchElementException("user not found"));
+            user.setUsername(dto.getUsername());
+            user.setEmail(dto.getEmail());
+
+            return mapper.toResponseDto(repository.save(user));
+    }
+
+    @Override
+    public AppUserResponseDto updateCoins(Long userId, int newCoins) {
+        AppUser user = repository.findById(userId)
+                .orElseThrow(() -> new NoSuchElementException("user not found"));
+        user.setCoins(newCoins);
+        return mapper.toResponseDto(repository.save(user));
     }
 }

@@ -1,12 +1,18 @@
-package rjkscore.Application.Mapper;
+package rjkscore.application.mapper;
+
+import org.springframework.stereotype.Component;
 
 import rjkscore.Domain.AppUser;
 import rjkscore.Infrastructure.Dto.Request.AppUserRequestDto;
+import rjkscore.Infrastructure.Dto.Request.RegisterRequestDto;
+import rjkscore.Infrastructure.Dto.Request.UpdateUserDto;
 import rjkscore.Infrastructure.Dto.Response.AppUserResponseDto;
 
+@Component
 public class AppUserMapper {
-    public AppUserResponseDto toResponseDto (AppUser user){
-        if (user == null) return null;
+    public AppUserResponseDto toResponseDto(AppUser user) {
+        if (user == null)
+            return null;
 
         return AppUserResponseDto.builder()
                 .userId(user.getUserId())
@@ -16,13 +22,33 @@ public class AppUserMapper {
                 .build();
     }
 
-    public AppUser toEntity (AppUserRequestDto dto){
-        if (dto == null) return null;
+    public AppUser toEntity(AppUserRequestDto dto, String hashedPassword) {
+        if (dto == null)
+            return null;
 
         return AppUser.builder()
                 .username(dto.getUsername())
                 .email(dto.getEmail())
+                .password(hashedPassword)
                 .coins(1000)
                 .build();
+    }
+
+    public AppUser toEntity(RegisterRequestDto dto, String hashedPassword) {
+        if (dto == null)
+            return null;
+
+        return AppUser.builder()
+                .username(dto.getUsername())
+                .email(dto.getEmail())
+                .password(hashedPassword)
+                .coins(1000)
+                .build();
+    }
+
+    public void updateFromDto (AppUser user, UpdateUserDto dto){
+        if(dto.getUsername() != null)user.setUsername(dto.getUsername()); 
+        if(dto.getEmail() != null)user.setEmail(dto.getEmail()); 
+
     }
 }

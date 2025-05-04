@@ -2,13 +2,13 @@ package rjkscore.Infrastructure.Controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import rjkscore.Application.Service.AppUserService;
+import rjkscore.Infrastructure.Dto.Request.CoinsUpdateDto;
+import rjkscore.Infrastructure.Dto.Request.UpdateUserDto;
 import rjkscore.Infrastructure.Dto.Response.AppUserResponseDto;
+import rjkscore.application.service.AppUserService;
 
 @RestController
 @RequestMapping("/api/users")
@@ -27,6 +27,17 @@ public class AppUserController {
     @GetMapping("/{userId}")
     public AppUserResponseDto getUserById(@PathVariable Long userId) {
         return service.getUserById(userId);
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<AppUserResponseDto> updateUser(@PathVariable Long userId, @RequestBody UpdateUserDto dto) {
+        return ResponseEntity.ok(service.updateUser(userId, dto));
+    }
+
+    @PutMapping("/{userId}/coins")
+    public ResponseEntity<AppUserResponseDto> updateCoins(@PathVariable long userId, @RequestBody CoinsUpdateDto coinsDto) {
+        return ResponseEntity.ok(service.updateCoins(userId, coinsDto.getCoins()));
+
     }
     
 }
