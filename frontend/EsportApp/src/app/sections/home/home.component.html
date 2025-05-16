@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="d-flex gap-2 p-2 bg-dark">
+  @for (tab of tabs; track tab) {
+    <app-tab-button
+      [label]="tab"
+      [active]="tab === selected"
+      (click)="onSelect(tab)"
+    ></app-tab-button>
+  }
+</div>
+
