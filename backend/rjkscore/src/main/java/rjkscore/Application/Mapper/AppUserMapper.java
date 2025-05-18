@@ -3,10 +3,10 @@ package rjkscore.application.mapper;
 import org.springframework.stereotype.Component;
 
 import rjkscore.Domain.AppUser;
-import rjkscore.Infrastructure.Dto.Request.AppUserRequestDto;
-import rjkscore.Infrastructure.Dto.Request.RegisterRequestDto;
-import rjkscore.Infrastructure.Dto.Request.UpdateUserDto;
-import rjkscore.Infrastructure.Dto.Response.AppUserResponseDto;
+import rjkscore.infrastructure.Dto.Request.AppUserRequestDto;
+import rjkscore.infrastructure.Dto.Request.RegisterRequestDto;
+import rjkscore.infrastructure.Dto.Request.UpdateUserDto;
+import rjkscore.infrastructure.Dto.Response.AppUserResponseDto;
 
 @Component
 public class AppUserMapper {

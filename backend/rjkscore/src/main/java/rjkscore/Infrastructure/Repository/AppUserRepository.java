@@ -1,4 +1,4 @@
-package rjkscore.Infrastructure.Repository;
+package rjkscore.infrastructure.Repository;
 
 import java.util.Optional;
 

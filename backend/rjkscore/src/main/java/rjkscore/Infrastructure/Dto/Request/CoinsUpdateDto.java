@@ -1,4 +1,4 @@
-package rjkscore.Infrastructure.Dto.Request;
+package rjkscore.infrastructure.Dto.Request;
 
 import lombok.*;
 

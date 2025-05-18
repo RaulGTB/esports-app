@@ -1,14 +1,14 @@
-package rjkscore.Infrastructure.Controller;
+package rjkscore.infrastructure.Controller;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import rjkscore.Infrastructure.Dto.Request.CoinsUpdateDto;
-import rjkscore.Infrastructure.Dto.Request.UpdateUserDto;
-import rjkscore.Infrastructure.Dto.Response.AppUserResponseDto;
 import rjkscore.application.service.AppUserService;
+import rjkscore.infrastructure.Dto.Request.CoinsUpdateDto;
+import rjkscore.infrastructure.Dto.Request.UpdateUserDto;
+import rjkscore.infrastructure.Dto.Response.AppUserResponseDto;
 
 @RestController
 @RequestMapping("/api/users")

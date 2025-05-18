@@ -1,4 +1,4 @@
-package rjkscore.Infrastructure.Dto.Response;
+package rjkscore.infrastructure.Dto.Response;
 
 import lombok.Builder;
 import lombok.Data;
